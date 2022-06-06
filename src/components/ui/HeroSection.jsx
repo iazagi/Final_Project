@@ -3,6 +3,8 @@ import { Container, Row, Col } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import './heroSection.css';
 import heroimg from '../../assets/images/hero.jpg';
+
+
 const HeroSection = () => {
     return <section className='hero__section'>
         <Container>
