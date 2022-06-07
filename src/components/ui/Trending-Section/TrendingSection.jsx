@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { NFT__DATA } from '../../../assets/data/data';
 import NftCard from '../Nft-card/NftCard';
+import './trendingSection.css';
 
 const TrendingSection = () => {
   return (
