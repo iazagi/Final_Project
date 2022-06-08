@@ -3,24 +3,14 @@ import CommonSection from '../components/ui/Common-Section/CommonSection';
 import { Container, Row, Col } from 'reactstrap';
 import NftCard from '../components/ui/Nft-card/NftCard';
 import { NFT__DATA } from '../assets/data/data';
+import '../Styles/market.css';
 
 const Market = () => {
+  const handleCategory = () => {};
 
-const handleCategory = () =>{
+  const handleItems = () => {};
 
-}
-
-const handleItems - () =>{
-
-}
-
-const handleSort = ()=> {
-    
-}
-
-
-
-
+  const handleSort = () => {};
 
   return (
     <>
@@ -29,11 +19,11 @@ const handleSort = ()=> {
       <section>
         <Container>
           <Row>
-            <Col lang="12" className="md-5">
+            <Col lg="12" className="mb-5">
               <div className="market__product__filter d-flex align-items-center justify-content-between">
                 <div className="filter__left d-flex align-items-center gap-5">
                   <div className="all__category__filter">
-                    <select>
+                    <select onChange={handleCategory}>
                       <option>All Categories</option>
                       <option value="art">Art</option>
                       <option value="music">Music</option>
@@ -44,26 +34,28 @@ const handleSort = ()=> {
                   </div>
 
                   <div className="all__items__filter">
-                    <select>
+                    <select onChange={handleItems}>
                       <h6>All Items</h6>
                       <option>all Items</option>
                       <option value="single-item">Single Item</option>
                       <option value="bundle">Bundle</option>
                     </select>
                   </div>
-                  <div className="filter__right">
-                    <h6>Sort By</h6>
+                </div>
+                <div className="filter__right">
+                  <select onChange={handleSort}>
+                    <option>Sort By</option>
                     <option value="single-item">High Rate</option>
                     <option value="bundle">Mid Rate</option>
                     <option value="bundle">Low Rate</option>
-                  </div>
+                  </select>
                 </div>
               </div>
             </Col>
 
             {NFT__DATA.map((item) => (
-              <Col lg="3" md="4" sm="6" className="md-5">
-                <NftCard item={item} key={item.id} />
+              <Col lg="3" md="4" sm="6" className="md-5" key={item.id}>
+                <NftCard item={item} />
               </Col>
             ))}
           </Row>
