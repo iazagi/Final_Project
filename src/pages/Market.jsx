@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CommonSection from '../components/ui/Common-Section/CommonSection';
 import { Container, Row, Col } from 'reactstrap';
 import NftCard from '../components/ui/Nft-card/NftCard';
@@ -6,11 +6,31 @@ import { NFT__DATA } from '../assets/data/data';
 import '../Styles/market.css';
 
 const Market = () => {
+  const [data, setData] = useState(NFT__DATA);
+
   const handleCategory = () => {};
 
   const handleItems = () => {};
 
-  const handleSort = () => {};
+  /// ================== sort data by high mid and low rate =======
+
+  const handleSort = (e) => {
+    const filterValue = e.target.value;
+    if (filterValue === 'High') {
+      const filterData = NFT__DATA.filter((item) => item.currentBid >= 6);
+      setData(filterData);
+    }
+    if (filterValue === 'Mid') {
+      const filterData = NFT__DATA.filter(
+        (item) => item.currentBid >= 5 && item.currentBid < 6
+      );
+      setData(filterData);
+    }
+    if (filterValue === 'Low') {
+      const filterData = NFT__DATA.filter((item) => item.currentBid < 4.99);
+      setData(filterData);
+    }
+  };
 
   return (
     <>
@@ -45,15 +65,15 @@ const Market = () => {
                 <div className="filter__right">
                   <select onChange={handleSort}>
                     <option>Sort By</option>
-                    <option value="single-item">High Rate</option>
-                    <option value="bundle">Mid Rate</option>
-                    <option value="bundle">Low Rate</option>
+                    <option value="High">High Rate</option>
+                    <option value="Mid">Mid Rate</option>
+                    <option value="Low">Low Rate</option>
                   </select>
                 </div>
               </div>
             </Col>
 
-            {NFT__DATA.map((item) => (
+            {data?.map((item) => (
               <Col lg="3" md="4" sm="6" className="md-5" key={item.id}>
                 <NftCard item={item} />
               </Col>

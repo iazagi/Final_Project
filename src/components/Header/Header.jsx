@@ -35,9 +35,10 @@ const Header = () => {
       ) {
         headerRef.current.classList.add('header__shrink');
       } else {
-        headerRef.current.classList.remove('header_shrink');
+        headerRef.current.classList.remove('header__shrink');
       }
     });
+
     return () => {
       window.removeEventListener('scroll');
     };
